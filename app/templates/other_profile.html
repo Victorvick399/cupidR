@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{%block content%}
+<div class="container" style="font-family: 'Nunito', sans-serif;">
+  <div class="row profile">
+    <div class="col-md-3 prof-left text-center">
+      {%if other_user.profile.profile_pic %}
+      <img src="{{other_user.profile.profile_pic.cdn_url}}" alt="{{user.username}}" class="img-fluid prof-pic">
+      {%else%}
+      <a href="{% url 'Update_profile' %}"><img class="img-fluid prof-pic"
+          src="https://p7.hiclipart.com/preview/980/304/8/computer-icons-user-profile-avatar.jpg"
+          alt="{{user.username}}"></a>
+      {%endif%}
+
+      <p class="">{{other_user.username}}</p>
+      <hr>
+      <p>Bio : {{other_user.profile.bio}}</p>
+      <p>Email: <a href="http://www.{{other_user.email}}">{{other_user.email}}</a></p>
+    </div>
+    <div class=" col-md-9 prof-right">
+      {% if posts %}
+      <div class="row row-flex">
+        {% for pic in posts %}
+        <div class="col-md-6 col-sm-8 display panel col-lg-5" style="margin-top: 20px;">
+          <div class="card" style="width: 1000px;">
+            <a data-toggle="modal" data-target="{{pic.name}}"><img class="card-img-top image"
+                src="{{pic.image.cdn_url}}" style="height: 250px;" alt="Card image cap"></a>
+            <div class="card-body">
+              <h6>{{pic.name}}</h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+          <h2 class="text-center">There No photos.</h2>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
