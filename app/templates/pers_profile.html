@@ -1,0 +1,72 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+{%block content%}
+<div class="container" style="font-family: 'Nunito', sans-serif;">
+  <div class="row profile">
+    <div class="col-md-3 prof-left text-center">
+      {%if user.profile.profile_pic %}
+      <img src="{{user.profile.profile_pic.cdn_url}}" alt="{{user.username}}" class="img-fluid prof-pic">
+      {%else%}
+      <a href="{% url 'Update_profile' %}"><img class="img-fluid prof-pic"
+          src="https://p7.hiclipart.com/preview/980/304/8/computer-icons-user-profile-avatar.jpg"
+          alt="{{user.username}}"></a>
+      {%endif%}
+
+      <p class="">{{user.username}}</p>
+      <hr>
+      <p>Bio : {{user.profile.bio}}</p>
+      <a href="{% url 'Update_profile' %}" class="btn btn-warning btn-outline nav-link"
+        style="margin-top: 10px; margin-bottom: 10px; font-family: 'Quicksand', sans-serif;   color:#003459;">Edit
+        profile</a>
+      <div id="walrus-hidden">
+        <p style="cursor: pointer;
+        color: #0088cc;"><span class="clickable" style="cursor: pointer;
+          color: #0088cc;">Click here to see the post some photos of yourself</span></p>
+      </div>
+
+      <div id="walrus-showing" style="display: none">
+        <p style="cursor: pointer;
+        color: #0088cc;"><span class="clickable">Click here to hide the form.</span></p>
+
+        <form action="{% url 'post' %}" method="post">
+          {%csrf_token%}
+
+          {% bootstrap_form form %}
+          <input type="submit" class="btn btn-warning btn-outline nav-link"
+            style="font-family: 'Quicksand', sans-serif;   color:#003459;" value="Post">
+        </form>
+      </div>
+    </div>
+    <div class=" col-md-9 prof-right">
+      {% if posts %}
+      <div class="row row-flex">
+        {% for pic in posts %}
+        <div class="col-md-6 col-sm-8 display panel col-lg-5" style="margin-top: 20px;">
+          <div class="card" style="width: 1000px;">
+            <a data-toggle="modal" data-target="{{pic.name}}"><img class="card-img-top image"
+                src="{{pic.image.cdn_url}}" style="height: 250px;" alt="Card image cap"></a>
+            <div class="card-body">
+              <h6>{{pic.name}}</h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+          <h2 class="text-center">There No photos.</h2>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $(".clickable").click(function () {
+      $("#walrus-showing").toggle();
+      $("#walrus-hidden").toggle();
+    });
+  });
+</script>
+{%endblock%}
