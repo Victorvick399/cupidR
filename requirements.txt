@@ -14,10 +14,10 @@ django-registration==2.4.1
 gunicorn==20.0.4
 idna==2.8
 oauthlib==3.1.0
-pkg-resources==0.0.0
 psycopg2==2.8.4
 pycodestyle==2.5.0
 python-dateutil==2.8.1
+python-decouple==3.3
 python3-openid==3.1.0
 pytz==2019.3
 pyuploadcare==2.6.0
