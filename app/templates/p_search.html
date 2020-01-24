@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{%block content%}
+<div class="container" style="font-family: 'Nunito', sans-serif;">
+  <div class="row">
+    <div class="col-md-3 prof-left text-center">
+      <h5>Find matches</h5>
+      <form action="{% url 'search' %}" method="post">
+        {%csrf_token%}
+
+        {% bootstrap_form form %}
+        <input type="submit" class="btn btn-outline-primary btn-lg" value="Find">
+      </form>
+    </div>
+    <div class=" col-md-9 prof-right">
+      {%if p_users %}
+      <div class="matches">
+        {%for user in p_users%}
+        <div class="card">
+          <div class="card-body">
+            {% if user.profile.profile_pic.cdn_url %}
+            <img class="card-photo" src="{{user.profile.profile_pic.cdn_url}}" alt="">
+            {% else %}
+            <img class="card-photo" src="https://huntpng.com/images250/avatar-png-icon-3.png" alt="">
+            {% endif %}
+          </div>
+          <div class="card-footer">
+            <p>{{user.username}}</p>
+            <p>{{user.profile.bio}}</p>
+          </div>
+        </div>
+
+        {%endfor%}
+      </div>
+      {%else%}
+      {% if p_users %}
+      <h5 style="margin-top: 10px;" class="alert alert-success">Found {{p_users|length}} users.</h5>
+      {% else %}
+      <p style="margin-top: 10px;" class="alert alert-success">You have not searched for any users</p>
+      {% endif %}
+      {%endif%}
+    </div>
+  </div>
+</div>
+{% endblock %}
