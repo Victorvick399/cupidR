@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+
+{%block content%}
+<div class="container" style="font-family: 'Nunito', sans-serif;">
+  <div class="update">
+    <div class="row">
+      <div class="container text-center">
+        <h3 style="color:#003459; font-family: 'Poiret One', cursive; padding-bottom:15px;">Update Profile</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <form action="{%url 'Update_profile'%}" method="post" enctype="multipart/form-data">
+          {%csrf_token%}
+
+          {% bootstrap_form profile_form%}
+          <div class='form-group'>
+            <input type="submit" class="btn btn-outline-primary" value="Update">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
