@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{%block content%}
+<div class="container" style="font-family: 'Nunito', sans-serif;">
+  <div class="row profile">
+    <div class="col-md-3 prof-left text-center">
+      {%if user.profile.profile_pic %}
+      <img src="{{user.profile.profile_pic.cdn_url}}" alt="{{user.username}}" class="img-fluid prof-pic">
+      {%else%}
+      <a href="{% url 'Update_profile' %}"><img class="img-fluid prof-pic"
+          src="https://p7.hiclipart.com/preview/980/304/8/computer-icons-user-profile-avatar.jpg"
+          alt="{{user.username}}"></a>
+      {%endif%}
+
+      <p class="">{{user.username}}</p>
+      <hr>
+      <a href="{% url 'p_search' %}" class="btn btn-warning btn-outline nav-link"
+        style="font-family: 'Quicksand', sans-serif;   color:#003459; margin-top: 4px;"><i class="fas fa-search"></i>
+        Search</a>
+      <hr>
+    </div>
+    <div class=" col-md-9 prof-right">
+      {% if users %}
+      <div class="row row-flex">
+        {% for user in users %}
+        <div class="col-md-6 col-sm-8 display panel col-lg-5" style="margin-top: 20px;">
+          <div class="card" style="width: 18rem;">
+            {% if user.profile.profile_pic %}
+            <a data-toggle="modal"><img class="card-img-top image" src="{{user.profile.profile_pic.cdn_url}}"
+                alt="{{user.username}}" style="height: 250px;"></a>
+            {% else %}
+            <a data-toggle="modal"><img class="card-img-top image"
+                src="https://p7.hiclipart.com/preview/980/304/8/computer-icons-user-profile-avatar.jpg"
+                alt="{{user.username}}" style="height: 250px;"></a>
+            {% endif %}
+            <div class="card-body">
+              <p><a href="/user/profile/{{user.username}}">{{user.username}}</a></p>
+              <p>{{user.profile.bio}}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="row">
+          <h2 class="text-center">There No people.</h2>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <!-- </div>
+</div> -->
+  {%endblock%}
+
+
+  <!-- <div class=" col-md-9 prof-right">
+    {% if posts %}
+    <div class="row row-flex">
+      {% for pic in posts %}
+      <div class="col-md-6 col-sm-8 display panel col-lg-5" style="margin-top: 20px;">
+        <div class="card" style="width: 1000px;">
+          <a data-toggle="modal" data-target="{{pic.name}}"><img class="card-img-top image" src="{{pic.image.cdn_url}}"
+              style="height: 250px;" alt="Card image cap"></a>
+          <div class="card-body">
+            <h6>{{pic.name}}</h6>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="row">
+        <h2 class="text-center">There No photos.</h2>
+      </div>
+      {% endif %} -->
