@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark">
+  <a class="navbar-brand" style="padding-left:20px; font-size:2em; color: #FFFFFF; font-family: 'Poiret One', cursive;" href="/">cupidR</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="btn btn-warning btn-outline nav-link" style="font-family: 'Quicksand', sans-serif;   color:#003459;" href="{% url 'my_profile' %}">{{user.username}}'s Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-warning btn-outline nav-link" style="font-family: 'Quicksand', sans-serif;   color:#003459;" href="/accounts/logout">Sign out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="btn btn-warning btn-outline nav-link ml-auto" style="font-family: 'Quicksand', sans-serif;   color:#003459;" href="/accounts/login/">Sign in</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
