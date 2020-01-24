@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static %}
+<!-- Content block -->
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="container" style="padding-top:100px;">
+  <div class="row">
+    <div class="col text-center">
+      <a class="btn btn-warning btn-outline nav-link" style="font-family: 'Quicksand', sans-serif;   color:#003459;"
+        href="{% url 'Profile' %}">Go to {{user.username}}'s Profile</a>
+      <img class="img-fluid imageone" src="{% static 'app/img7.jpg' %}" style="padding-top:20px;" alt="My image">
+    </div>
+  </div>
+</div>
+
+{% else %}
+<div class="container">
+  <div class="col">
+    <div class="col text-center">
+      <p class="text-center examplea" style="color:#003459; font-family: 'Abril Fatface', cursive;">Find Your <span
+          style="color:#f0ad4e;">SoulMate!</span></p>
+      <p class="text-center exampleb" style="color:#f0ad4e; font-family: 'Quicksand', sans-serif;">Tired of being
+        single? Looking for a SoulMate? Well, Say no More and Sign up Below! </p>
+      {% if user.is_authenticated %}
+
+      {% else %}
+      <div class="row">
+        <div class="col text-center">
+          <a class="btn btn-warning" role="button" style="font-family: 'Quicksand', sans-serif; color:#003459;"
+            href="/accounts/signup/">Sign Up</a>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+    <div class="col-md">
+      <img class="img-fluid imageone" src="{% static 'app/img3.jpg' %}" alt="My image">
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock%}
