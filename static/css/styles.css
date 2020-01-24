@@ -1,0 +1,118 @@
+.navbar {
+  background-color: #003459;
+}
+
+.nav-item {
+  padding-right: .5rem !important;
+  padding-left: .5rem !important;
+}
+
+.brand {
+  padding-left: 50px;
+}
+
+body {
+  background-color: #FFFFFF;
+
+}
+
+.imageone {
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.imagetwo {
+  padding-top: 250px;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Profile */
+
+.profile {
+  margin: 2%;
+}
+
+.prof-left {
+  padding-right: 20px;
+}
+
+.prof-left img {
+  padding-bottom: 20px;
+}
+
+.prof-right {
+  border-left: 1px solid #ebe8e8;
+  padding-left: 20px
+}
+
+.update {
+  width: 100%;
+  margin-top: 5%;
+  left: 40%;
+}
+
+.update input {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  max-width: 270px;
+}
+
+.card-photo {
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.matches {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* Sign Up and Login */
+.daform {
+  border: 1px solid lightgray;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 50px;
+}
+
+.google {
+  list-style: none;
+}
+
+.socialaccount_providers :hover {
+  color: white;
+
+}
+
+.row.row-flex{
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 900px) {
+  .examplea {
+    font-size: 80px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .exampleb {
+    font-size: 20px;
+  }
+}
+
