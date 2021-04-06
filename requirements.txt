@@ -10,7 +10,7 @@ django-allauth==0.41.0
 django-bootstrap4==1.1.1
 django-fontawesome-5==1.0.16
 django-heroku==0.3.1
-django-registration==2.4.1
+django-registration==3.1.2
 gunicorn==20.0.4
 idna==2.8
 oauthlib==3.1.0
